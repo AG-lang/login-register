@@ -1,0 +1,97 @@
+{
+  // ----------------------------------------------------------------
+  // 通用设置 (General Settings)
+  // ----------------------------------------------------------------
+
+  // 开启保存时自动格式化，这是保证代码风格统一的核心
+  "editor.formatOnSave": true,
+
+  // 【已添加】将 Prettier 设为所有文件的【默认】格式化程序。
+  // 除非被特定语言的设置（如 Python）覆盖，否则都用它。
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // 【已添加】在全局范围启用“保存时代码操作”，并指定为 markdownlint。
+  // 这将自动修复 Markdown 文件中的警告。它不会影响 Python 的设置。
+  "editor.codeActionsOnSave": {
+    "source.fixAll.markdownlint": "explicit"
+  },
+
+  // 设置文件自动保存策略（延迟1秒后自动保存）
+  "files.autoSave": "afterDelay",
+
+  // 统一所有文件的行尾符为 LF (\n)，避免 Windows/Mac/Linux 换行符问题
+  "files.eol": "\n",
+
+  // 在文件浏览器中隐藏不必要的文件和文件夹
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.venv": true,
+    "**/venv": true,
+    "**/node_modules": true
+  },
+
+  // 确保 Windows 终端使用 UTF-8 编码，防止中文乱码
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+      "path": "cmd.exe",
+      "args": ["/K", "chcp 65001 > nul"]
+    }
+  },
+
+  // ----------------------------------------------------------------
+  // Python 相关设置 (此部分保持不变，它会正确覆盖全局设置)
+  // ----------------------------------------------------------------
+  "[python]": {
+    // 指定 Python 文件的默认格式化工具为 Black
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    // 在保存时自动执行代码操作，比如自动整理 import 顺序
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "python.defaultInterpreterPath": "./venv/bin/python",
+
+  // ----------------------------------------------------------------
+  // 前端 (JavaScript / React / TypeScript) 相关设置
+  // (因已设为全局默认值，这些是可选的，但保留也无妨)
+  // ----------------------------------------------------------------
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ----------------------------------------------------------------
+  // 【已添加】为 Markdown 文件明确指定规则，确保万无一失
+  // ----------------------------------------------------------------
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ----------------------------------------------------------------
+  // Tailwind CSS 智能提示与高亮 (此部分保持不变)
+  // ----------------------------------------------------------------
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.js": "javascript",
+    "*.jsx": "javascriptreact"
+  }
+}
